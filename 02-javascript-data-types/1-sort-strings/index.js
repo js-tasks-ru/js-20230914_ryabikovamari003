@@ -5,5 +5,13 @@
  * @returns {string[]}
  */
 export function sortStrings(arr, param = 'asc') {
-
+  if (arr.every(i => typeof i === "string") && param === 'asc' || param === 'desc') {
+    if (param === 'asc') {
+      return arr.sort();
+    }
+    else if (param === 'desc') {
+      return arr.sort().reverse()
+    }
+  }
+  else console.log('Error')
 }
