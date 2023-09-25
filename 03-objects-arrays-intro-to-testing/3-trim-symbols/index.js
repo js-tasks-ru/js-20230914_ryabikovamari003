@@ -5,18 +5,28 @@
  * @returns {string} - the new string without extra symbols according passed size
  */
 export function trimSymbols(string, size) {
-  const splitArray = string.split('')
-  const cache = {}
-  let result = ''
+  if (size === undefined) {
+    return string;
+  }
+  if (string === '' || size === 0) {
+    return ''
+  }
 
-  splitArray.forEach((element)=>{
-    cache[element] = Number.isInteger(cache[element]) ? cache[element]: 0
+  const splitArray = string.split('');
+  let match = 0;
+  let result = splitArray[0];
 
-    if (cache[element] < size) {
-      cache[element]++
-      result += element
+  splitArray.forEach((element, index)=>{
+    const nextElement = splitArray[index + 1];
+
+    if ( !nextElement) {return;}
+
+    match =  element === nextElement? match + 1: 0
+
+    if (match < size) {
+      result+=nextElement
     }
-  })
-
+  });
   return result
+
 }
