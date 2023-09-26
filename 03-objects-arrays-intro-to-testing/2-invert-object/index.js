@@ -5,11 +5,11 @@
  */
 export function invertObj(obj) {
   if (obj === undefined) {
-    return undefined
+    return;
   }
-  const makeArray = Object.entries(obj)
-  const reverseArray = makeArray.map((array) => {
-    return array.reverse()
-  })
-  return Object.fromEntries(reverseArray)
+  const entries = Object.entries(obj);
+  const reverseEntries = entries.map(([key, value]) => ([value, key]));
+
+  return Object.fromEntries(reverseEntries);
+
 }

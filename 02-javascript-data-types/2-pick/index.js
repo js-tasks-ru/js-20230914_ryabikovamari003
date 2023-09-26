@@ -6,8 +6,7 @@
  */
 export const pick = (obj, ...fields) => {
   const objProps = Object.entries(obj)
-  const filterKeys = [...fields]
-  const filteredProps = objProps.filter(([key]) => filterKeys.includes(key))
+  const filteredProps = objProps.filter(([key]) =>fields.includes(key))
 
   return Object.fromEntries(filteredProps)
 };
