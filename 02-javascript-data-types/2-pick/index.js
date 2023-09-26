@@ -5,5 +5,9 @@
  * @returns {object} - returns the new object
  */
 export const pick = (obj, ...fields) => {
+  const objProps = Object.entries(obj)
+  const filterKeys = [...fields]
+  const filteredProps = objProps.filter(([key]) => filterKeys.includes(key))
 
+  return Object.fromEntries(filteredProps)
 };
